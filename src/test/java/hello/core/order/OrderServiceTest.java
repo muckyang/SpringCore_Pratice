@@ -1,5 +1,6 @@
 package hello.core.order;
 
+import hello.core.config.AppConfig;
 import hello.core.domain.member.Grade;
 import hello.core.domain.member.Member;
 import hello.core.domain.order.Order;
@@ -13,15 +14,16 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 public class OrderServiceTest {
-    MemberService memberService = new MemberServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
+    AppConfig appConfig = new AppConfig();
+    MemberService memberService = appConfig.memberService();
+    OrderService orderService = appConfig.orderService();
 
     @Test
     void createOrder() {
-         Member member = new Member(1L,"memberA", Grade.VIP);
-         memberService.join(member);
+        Member member = new Member(1L, "memberA", Grade.VIP);
+        memberService.join(member);
 
-         Order order = orderService.createOrder(member.getId(), "item1", 10000 );
+        Order order = orderService.createOrder(member.getId(), "item1", 10000);
 
         assertThat(order.getDiscountPrice()).isEqualTo(1000);
 

@@ -1,6 +1,7 @@
 package hello.core.member;
 
 
+import hello.core.config.AppConfig;
 import hello.core.domain.member.Grade;
 import hello.core.domain.member.Member;
 import hello.core.service.MemberService;
@@ -10,8 +11,8 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 public class MemberServiceTest {
-
-    MemberService memberService = new MemberServiceImpl();
+    AppConfig appConfig = new AppConfig();
+    MemberService memberService = appConfig.memberService();
 
     @Test
     void join(){

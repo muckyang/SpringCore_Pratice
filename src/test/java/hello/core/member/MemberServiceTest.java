@@ -7,12 +7,15 @@ import hello.core.domain.member.Member;
 import hello.core.service.MemberService;
 import hello.core.service.MemberServiceImpl;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class MemberServiceTest {
-    AppConfig appConfig = new AppConfig();
-    MemberService memberService = appConfig.memberService();
+
+    ApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
+    MemberService memberService = ac.getBean("memberService",MemberService.class);
 
     @Test
     void join(){

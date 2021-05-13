@@ -13,7 +13,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import java.util.List;
 import java.util.Map;
 
-//동적 Bean 선택 
+//동적 Bean 선택
 public class AllBeanTest {
 
     @Test

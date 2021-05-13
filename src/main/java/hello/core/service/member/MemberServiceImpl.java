@@ -1,13 +1,16 @@
-package hello.core.service;
+package hello.core.service.member;
 
 import hello.core.domain.member.Member;
 import hello.core.repository.member.MemberRepository;
-import hello.core.repository.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MemberServiceImpl implements MemberService{
 
     private final MemberRepository memberRepository;
 
+    @Autowired
     public MemberServiceImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
@@ -20,5 +23,9 @@ public class MemberServiceImpl implements MemberService{
     @Override
     public Member findMember(Long memberId) {
         return memberRepository.findById(memberId);
+    }
+
+    public MemberRepository getMemberRepository(){
+        return memberRepository;
     }
 }
